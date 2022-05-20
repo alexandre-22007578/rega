@@ -1,0 +1,71 @@
+COMEÇAR POR PÔR NOME GRUPO E DATA ;
+
+CONFIGURE SELECT DEVICE
+
+MEXER SO DO INICIO PARA BAIXO
+
+CADA ESTADO 5 INSTRUÇÕES
+
+NUMERO DO ESTADO FICA ESTADO_XX (DECIMAL)
+
+OUT 	MOVLW (VALOR DO OUT )
+	MOVWF PORT X(X=A OU B)
+
+
+TESTE
+	btfssPORTX,BIT	->bit teste fie skip if set  			BIT A TESTAR (0-7 )	
+	GOT ESTADO SEGUINTE (SE DER 0)
+	GOT ESTADO SEGUINTE (SE DER 1)
+
+
+DEFINIR NO INICIO S0 S1 E ISSO NO INICIO COM O DEFINE
+
+
+
+
+
+
+ESTADO_0
+	movlw ESTADO_0 					OUT
+	movwf PORTB			; outputs		OUT
+	btfss K1				; teste		TESTE
+	goto estado_0		; IN = 0			TESTE
+	goto estado_1		; IN = 1			TESTE
+
+
+
+
+
+ESTADO DELAY
+	ESTADOXX
+		MOVLW ESTADOXX
+		MOVWF PORTX
+		
+
+POR TIMWE A 0
+TESTAR SH2 SE SAIR ANTES DO TIMEOUT ESTA BOM
+SE SAIR DE DEPOIS ERRO
+
+https://gyazo.com/3fd3b8fd92d15316f6bf088c47493db5 
+
+
+EXEMPLO:
+
+movlw 07h
+movwf option_reg
+
+
+
+
+
+ESTADO2
+	movLW ESTADO2
+	movWF P	ORTX
+	clrf TIMR0
+	btfsc sh2 			;tiver a 1 sai
+	goto estado xx
+	movlw FFh
+	xorwf  TMR0, W
+
+
+
